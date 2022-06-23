@@ -1,0 +1,17 @@
+<h1>restaurant</h1>
+
+
+<% @restaurants.each do |restaurant| %>
+    <%= restaurant.name %>
+    <%= restaurant.description %>
+    <%= restaurant.email %>
+    <%= restaurant.contact %>
+    <%= restaurant.full_address %>
+    <% if restaurant.image.present? %>
+        <%= image_tag restaurant.image %>
+     <% else %>
+        <p>image is not present<p>
+    <% end %>   
+<% end %>
+
+<%= link_to "add restaurant", new_restaurant_path %>

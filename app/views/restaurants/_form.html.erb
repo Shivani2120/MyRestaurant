@@ -1,0 +1,39 @@
+
+
+<%= form_for @restaurant do |f| %>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+</div>
+
+<div>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+<div>
+  <%= f.label :contact %>
+  <%= f.text_field :contact %>
+</div>
+
+<div>
+  <%= f.label :full_address %>
+  <%= f.text_field :full_address %>
+</div>
+
+<div>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+</div>
+
+<div>
+   <%= f.submit %>
+</div>
+
+<% end %>
