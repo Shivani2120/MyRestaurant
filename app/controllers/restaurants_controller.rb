@@ -15,28 +15,31 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = current_user.restaurants.find(params[:id])
+    authorize! :read, @restaurant
   end
 
   def create
     @user = current_user
     @restaurant = @user.restaurants.build(restaurant_params)
     @restaurant.save
-    
-    redirect_to @restaurant
+    @restaurants = current_user.restaurants
+    respond_to do |format|
+      format.js
+    end  
   end
 
   def update
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.update(restaurant_params)
-
-    redirect_to @restaurant
+    @restaurants = current_user.restaurants
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.destroy
-    
-    redirect_to @restaurant
   end
 
   private

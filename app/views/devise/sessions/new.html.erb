@@ -1,40 +1,38 @@
-<div id="tsparticles"></div>
-<div class="login-box">
-  <h2>Login</h2>
+<div class="content">
+  <div class="box">
+    <div class="header">
+      <h1>Log In</h1>
+    </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> 
+        <div class="email container">
+          <img src="https://storage.googleapis.com/koloicons/png/line/48-origin-size/48/17%20Settings/Account_2.png">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "email" %> <br/>
+        </div>
+        
+        <div class="passsword container">
+          <img src="https://storage.googleapis.com/koloicons/png/line/48-origin-size/48/21%20Control/Lock.png">
+         <%= f.password_field :password, autocomplete: "current-password", type:"password", placeholder:"password" %>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="user-box">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+        </div>
 
-      <div class="user-box">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+        <div class="remember">
+           <% if devise_mapping.rememberable? %>
+            <div class="left">
+              <%= f.check_box :remember_me %> Remember me
+            </div> 
+           <% end %>
+           
+          <div class="right">
+            <%= link_to "Forgot password?", new_password_path(resource_name) %>
+          </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+        </div>
+        <div class="submit">
+         <%= f.submit "Log in", type: "submit", value: "Submit" %> 
         </div>
       <% end %>
-
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <div class="actions">
-          <%= f.submit "Log in" %>
-        </div>
-      </a>
-    <% end %>
-
- 
+  </div>
 </div>
 
 
 
-
-<%= render "devise/shared/links" %>

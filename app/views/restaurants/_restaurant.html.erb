@@ -1,0 +1,35 @@
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row justify-content-center ">
+            <div class="col-2">
+                <% if restaurant.image.present? %>
+                    <%= image_tag restaurant.image.variant(resize_to_limit: [100, 100]) %>
+                <% else %>
+                    <img src="..." class="img-fluid rounded-start" alt="...">
+                <% end %>  
+            </div>
+
+            <div class="col-6">
+                <div class="card-body">
+                <h5><%= restaurant.name %></h5>
+                    <%#= restaurant.description %>
+                    <%#= restaurant.email %>
+                    <%#= restaurant.contact %>
+                    <%= restaurant.full_address %><br/>
+                </div>
+            </div>
+
+            <div class="col mt-2">
+                <div class="card-body">
+                  
+                    <%= link_to edit_restaurant_path(restaurant), class: "btn btn-outline-info  mt-2", remote: true do %>
+                       <i class="fa-solid fa-pen-clip"></i>
+                    <% end %>
+                 
+                    <%= link_to restaurant, method: :delete, data: { confirm: "Are you sure "}, class: "btn btn-outline-danger bi bi-trash-fill mt-1", remote: true do %>
+                      <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                 
+                </div>
+            </div>
+        </div>
+    </div>

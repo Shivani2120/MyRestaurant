@@ -1,17 +1,27 @@
-<h1>restaurant</h1>
 
 
-<% @restaurants.each do |restaurant| %>
-    <%= restaurant.name %>
-    <%= restaurant.description %>
-    <%= restaurant.email %>
-    <%= restaurant.contact %>
-    <%= restaurant.full_address %>
-    <% if restaurant.image.present? %>
-        <%= image_tag restaurant.image %>
-     <% else %>
-        <p>image is not present<p>
-    <% end %>   
-<% end %>
+<br>
+<br>
 
-<%= link_to "add restaurant", new_restaurant_path %>
+<div class="container-md " >
+    <div class="row">
+
+        <div class="col-4">
+           <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= link_to "add restaurant", new_restaurant_path, remote: true %></li>
+                    <li class="list-group-item">subscription</li>
+                    <li class="list-group-item">reset passsword</li>
+                    <li class="list-group-item">my profile</li>
+                    <li class="list-group-item">signout</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-8", id="newRestaurant" >
+            <%= render "index", restaurant: @restaurant %>   
+        </div>
+
+    </div>
+</div>
+

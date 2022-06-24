@@ -1,0 +1,5 @@
+<% @restaurants.each do |restaurant| %>
+    <div id="restaurantForm_<%= restaurant.id %>">
+        <%= render "restaurant", restaurant: restaurant %>
+    </div>    
+<% end %> 

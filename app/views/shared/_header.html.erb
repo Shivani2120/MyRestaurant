@@ -26,6 +26,10 @@
               <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </ul>
           </div>
+          
+          <% else %>
+            <%#= link_to "Sign up", new_registration_path(resource_name) %><br />
+            <%#= link_to "Log in", new_session_path(resource_name) %><br />
         <% end %>  
           
       </div>  
