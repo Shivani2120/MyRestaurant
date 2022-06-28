@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users 
-
+  
   root to: "home#index"
  
   resources :restaurants 
- 
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
 end

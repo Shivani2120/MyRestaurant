@@ -1,0 +1,21 @@
+
+<div class="container">
+    <strong>image</strong>
+    <% if @restaurant.restaurant_images.present? %>
+    <p>
+        <% @restaurant.restaurant_images.each do |img| %>
+          <%= img.photos %> <br>
+        <% end %>
+    </p>
+    <% end %>
+
+    <h3><%= @restaurant.name %></h2 >
+    <p><%= @restaurant.full_address %></p>
+
+    <p class="text-muted"><%= @restaurant.description %></p>
+
+    <div><%= @restaurant.email %></div>
+
+    <div><%= @restaurant.contact %></div>    
+
+</div>

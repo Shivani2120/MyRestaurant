@@ -1,8 +1,8 @@
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row justify-content-center ">
             <div class="col-2">
-                <% if restaurant.image.present? %>
-                    <%= image_tag restaurant.image.variant(resize_to_limit: [100, 100]) %>
+                <% if restaurant.image.attached? %>
+                    <%= image_tag restaurant.image, hight: 60, width: 60 %>
                 <% else %>
                     <img src="..." class="img-fluid rounded-start" alt="...">
                 <% end %>  
@@ -10,11 +10,8 @@
 
             <div class="col-6">
                 <div class="card-body">
-                <h5><%= restaurant.name %></h5>
-                    <%#= restaurant.description %>
-                    <%#= restaurant.email %>
-                    <%#= restaurant.contact %>
-                    <%= restaurant.full_address %><br/>
+                <h6><%= link_to restaurant.name, restaurant_path(restaurant), class: "text-decoration-none text-reset" %></h6>
+
                 </div>
             </div>
 

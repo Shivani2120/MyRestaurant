@@ -1,4 +1,10 @@
+
 <%= form_for @restaurant, remote: true do |f| %>
+<div class="border p-4">
+    <div class="mb-3">
+      <%= f.label :logo,class: "form-label" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
 
     <div class="mb-3">
       <%= f.label :name, class: "form-label"%>
@@ -25,13 +31,15 @@
       <%= f.text_field :full_address, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :image,class: "form-label" %>
-      <%= f.file_field :image, class: "form-control" %>
-    </div>
+      <div id="photos">
+        <%= f.fields_for :restaurant_images do |img| %>
+          <%= render 'restaurant_image_fields', f: img %>
+        <% end %>
+      </div>
+    
 
-    <div class="btn btn-primary" >
+    <div class="actions" >
       <%= f.submit "submit", class: "btn btn-primary"  %>
     </div>
-
+</div>
 <% end %>

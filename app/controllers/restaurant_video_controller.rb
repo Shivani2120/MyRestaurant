@@ -1,0 +1,2 @@
+class RestaurantVideoController < ApplicationController
+end

@@ -6,13 +6,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image   
-  
+
   has_many :restaurants   
   
-  after_create :assign_default_role
-
-  def assign_default_role
-    self.add_role(:newuser) if self.roles.blank?
+  def owner?
+    has_role?(:owner)
   end
-
+  
+  def normal_user?
+    has_role?(:normal_user)
+  end 
 end

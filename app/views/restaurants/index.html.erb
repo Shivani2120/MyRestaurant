@@ -1,5 +1,6 @@
 
 
+
 <br>
 <br>
 
@@ -7,15 +8,18 @@
     <div class="row">
 
         <div class="col-4">
-           <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><%= link_to "add restaurant", new_restaurant_path, remote: true %></li>
-                    <li class="list-group-item">subscription</li>
-                    <li class="list-group-item">reset passsword</li>
-                    <li class="list-group-item">my profile</li>
-                    <li class="list-group-item">signout</li>
-                </ul>
-            </div>
+            <% if current_user.has_role? :owner %>
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none text-reset", remote: true %></li>
+                        <li class="list-group-item">Subscription</li>
+                        <li class="list-group-item">Reset Passsword</li>
+                        <li class="list-group-item">My Profile</li>
+                        <li class="list-group-item"><%= link_to "log out", destroy_user_session_path, method: :delete, class: "text-decoration-none text-reset" %>
+</li>
+                    </ul>
+                </div>
+            <% end %>
         </div>
         
         <div class="col-8", id="newRestaurant" >
