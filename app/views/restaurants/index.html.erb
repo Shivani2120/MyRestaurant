@@ -6,24 +6,24 @@
 
 <div class="container-md " >
     <div class="row">
-
         <div class="col-4">
             <% if current_user.has_role? :owner %>
-                <div class="card" style="width: 18rem;">
+                <div class="card shadow " style="width: 18rem;">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none text-reset", remote: true %></li>
+                        <li class="list-group-item"><%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none text-reset shadow", remote: true %><i class="fas fa-edit p-2"></i></li>
                         <li class="list-group-item">Subscription</li>
                         <li class="list-group-item">Reset Passsword</li>
                         <li class="list-group-item">My Profile</li>
-                        <li class="list-group-item"><%= link_to "log out", destroy_user_session_path, method: :delete, class: "text-decoration-none text-reset" %>
-</li>
+                        <li class="list-group-item"><%= link_to "log out", destroy_user_session_path, method: :delete, class: "text-decoration-none text-reset shadow" %></li>
                     </ul>
                 </div>
             <% end %>
         </div>
         
         <div class="col-8", id="newRestaurant" >
+          
             <%= render "index", restaurant: @restaurant %>   
+      
         </div>
 
     </div>

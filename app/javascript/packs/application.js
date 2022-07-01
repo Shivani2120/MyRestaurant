@@ -19,7 +19,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-  
+
 
 
 

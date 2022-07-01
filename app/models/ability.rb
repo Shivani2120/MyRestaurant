@@ -5,7 +5,7 @@ class Ability
 
    def initialize(user)
     user ||= User.new
-    if user.owner?
+    if user.owner? 
       can :manage, Restaurant, user_id: user.id
     else
       can :read, Restaurant

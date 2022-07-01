@@ -11,20 +11,27 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link act" aria-current="page" href="#">Home</a>
+                <a class="nav-link act" aria-current="page" href="/">Home</a>
               </li>
-           
+
+              <li class="nav-item">
+                <%= link_to "Restaurant", restaurants_path, class: "nav-link" %>
+              </li>
+
               <% if user_signed_in? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <%= current_user.email %>
-                  <%= current_user.roles.pluck(:name) %>
+                  
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <% if current_user.has_role? :owner %>
-                     <%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none text-reset", remote: true %>
-                  <% end %>
-                  <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                   <% if current_user.has_role? :owner %>
+                      <%= link_to "Add Restaurant", new_restaurant_path, class: "text-decoration-none text-reset dropdown-item", remote: true %>
+                      <% if current_user.stripe_id.nil? %>
+                        <%= link_to "Subscription", add_payment_method_path, remote: true, class: "dropdown-item" %>
+                      <% end %>
+                    <% end %>
+                    <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </ul>
               </li>
               <% else %>
@@ -37,6 +44,11 @@
           </div>
         </div>
       </nav>
+       <div class="middle">
+          <h1 class="text-white fw-bold display-3">Welcome to<span class="theme-text">MyRestaurant</span></h1>
+       </div>
+     </div>
+   
   </section>
 
 

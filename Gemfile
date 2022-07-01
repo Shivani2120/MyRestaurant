@@ -62,3 +62,7 @@ gem 'image_processing', '~> 1.2'
 gem 'cancancan'
 
 gem "rolify"
+
+gem 'stripe-rails'
+
+gem 'dotenv-rails', groups: [:development, :test]
