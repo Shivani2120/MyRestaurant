@@ -1,4 +1,4 @@
-
+<div class= "mb-3 shadow">
 <%= form_for @restaurant, remote: true do |f| %>
 <div class="border p-4">
     <div class="mb-3">
@@ -32,19 +32,20 @@
     </div>
 
    <div class="mb-3">   
-     <%= f.label :Photo %>
-     <%= f.file_field :images, multiple: true %> 
+     <%= f.label :Photo, class: "form-label" %>
+     <%= f.file_field :images, multiple: true ,class: "form-control" %> 
    </div>  
 
 
    <div class="mb-3">   
-     <%= f.label :Video %>
-     <%= f.file_field :clips, multiple: true %> 
+     <%= f.label :Video, class: "form-label" %>
+     <%= f.file_field :clips, multiple: true, class: "form-control" %> 
    </div> 
 
 
     <div class="actions" >
-      <%= f.submit "submit", class: "btn btn-primary"  %>
+      <%= f.submit "submit", class: "btn btn-outline-dark "  %>
     </div>
 </div>
 <% end %>
+</div>

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web => "/sidkiq"
   
   root to: "home#index"
  
-  resources :restaurants 
+  resources :restaurants do
+    resources :reviews, only: [:create, :destroy, :new]
+  end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 

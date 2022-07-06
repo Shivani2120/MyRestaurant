@@ -66,3 +66,9 @@ gem "rolify"
 gem 'stripe-rails'
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem "letter_opener", group: :development
+
+gem 'sidekiq'
+
+gem 'redis-rails'

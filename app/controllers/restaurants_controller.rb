@@ -2,7 +2,9 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
+    
     @restaurants = current_user.restaurants
+  
   end
 
   def edit
@@ -30,7 +32,6 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-  
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.update(restaurant_params)
     @restaurants = current_user.restaurants
@@ -43,6 +44,7 @@ class RestaurantsController < ApplicationController
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.destroy
   end
+  
 
   private
    

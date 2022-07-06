@@ -30,15 +30,47 @@
     </button>
   </div>
 
-  <!------------------------------------------------XXX----------------------------------------------->               
+  <!--------------------------------------restaurant detail----------------------------------------------->               
   <h3 class="fw-bolder mt-3"><%= @restaurant.name %></h2 >
   <p class="text-muted"><%= @restaurant.full_address %></p>
 
   <div class="fst-italic" ><%= @restaurant.email %></div>
 
-  <div class="fw-light"><%= @restaurant.contact %></div>      
+  <div class="fw-light"><%= @restaurant.contact %></div>    
+  <hr/>
+ 
+  <!------------------------------------Review--------------------------------------->
+      
+  <div id="clicked">
+ 
+    <%= render 'reviews/review' %>
+   
+  </div>
+
+    <!---------------------------- Button ----------------------------------->
+     <div class="col-12">
+            <%= link_to "Review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-primary", data: { "bs-target": "#exampleModal", "bs-toggle": "modal" }%>
+            <br/>
+            <br/>
+      </div>
+   
+
+    <!------------------------------ Modal ------------------------------------------------>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Submit your Review</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+             <%= render 'reviews/form' %>   
+        </div>
+      </div>
+    </div>
+
 </div>
 
 
+     
 
 
