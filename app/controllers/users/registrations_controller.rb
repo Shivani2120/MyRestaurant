@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super 
       @user.add_role params[:user][:role_ids]
-    
   end
 
   # GET /resource/edit
@@ -53,10 +52,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  
-  # end
+  def after_sign_up_path_for(resource)
+    super(resource)
+    if user_signed_in?
+      if current_user.has_role? :owner 
+        if current_user.stripe_id.nil? 
+          redirect_to subscriptions_path
+        else
+          redirect_to restaurants_path
+        end    
+      end   
+    end 
+   
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

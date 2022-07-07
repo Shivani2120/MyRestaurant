@@ -72,3 +72,9 @@ gem "letter_opener", group: :development
 gem 'sidekiq'
 
 gem 'redis-rails'
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
+gem 'geocoder', '~> 1.3'
+

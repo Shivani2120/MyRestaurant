@@ -1,5 +1,5 @@
  <section class="header">
-     <div class="container">
+     <div class="container-fluid">
           
         <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -21,8 +21,7 @@
               <% if user_signed_in? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <%= current_user.email %>
-                  
+                  <%= current_user.email %>    
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                    <% if current_user.has_role? :owner %>
@@ -37,18 +36,33 @@
               <% else %>
                   <%= link_to "Sign up", new_registration_path(resource_name), class: "nav-link" %><br />
                   <%= link_to "Log in", new_session_path(resource_name), class: "nav-link" %><br />
-              <% end %> 
-            
-            </ul>
-           
+              <% end %>    
+            </ul>    
           </div>
         </div>
       </nav>
-       <div class="middle">
-          <h1 class="text-white fw-bold display-3">Welcome to<span class="theme-text"> The Shine</span></h1>
+
+      <br/>
+      <br/>            
+       <div class="middle d-flex justify-content-center mt-5">
+          <h1 class="text-white fw-bold">Shine</h1>
        </div>
+        <p class="text-white middleText d-flex justify-content-center ">Welcome to<span class="theme-text"> The Shine</span></p> 
+        <% if controller_name == "home" && action_name == "index"  %>
+          <div class="d-flex justify-content-center search">     
+            <%= form_tag(search_restaurants_path, method: :get, class: "d-flex", role: "search", type: "text") do %>
+        
+             <%= text_field_tag(:search, params[:search], class: "form-control me-2", id: "searchForm" , placeholder: "Search for restaurant, dish, or cuisine" ) %>
+           
+              <i class="fa-solid fa-magnifying-glass fa-2x me-2" id="searchBar"></i>  
+        
+              <%= submit_tag "search", class: "btn btn-outline-dark btn-lg" %>   
+                
+            <% end %> 
+          </div>
+        <% end %>   
      </div>
    
   </section>
-
-
+  
+                     

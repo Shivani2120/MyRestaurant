@@ -7,6 +7,9 @@ Rails.application.routes.draw do
  
   resources :restaurants do
     resources :reviews, only: [:create, :destroy, :new]
+      collection do
+        get :search
+      end
   end
 
   devise_for :users, controllers: { registrations: 'users/registrations' }

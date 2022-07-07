@@ -2,6 +2,9 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "reviews.scss";
+@import "home.scss";
+@import "restaurants.scss";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -51,81 +54,53 @@
   bottom: 0px;
 }
 
+/*---------------------Search Bar------------------------------*/ 
+
 .middle {
-  height: 40vh;
-  width: 80%;
+  height: 10vh;
+  width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
 .middle h1{
-  font-size: 70px;
+  font-size: 50px;
 }
 
-
-/* Zoom In #1 */
-.hover01 figure {
-	-webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-}
-.hover01 figure:hover {
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+.middleText {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 30px;
 }
 
-
-/*---------------------------Rating------------------------------*/
-
-*{
-  margin: 0;
-  padding: 0;
-}
-.rate {
-  float: left;
-  height: 46px;
-  padding: 0 10px;
-}
-.rate:not(:checked) > input {
-  position:absolute;
-  top:-9999px;
-}
-.rate:not(:checked) > label {
-  float:right;
-  width:1em;
-  overflow:hidden;
-  white-space:nowrap;
-  cursor:pointer;
-  font-size:30px;
-  color:#ccc;
-}
-.rate:not(:checked) > label:before {
-  content: '★ ';
-}
-.rate > input:checked ~ label {
-  color: #FFC700;
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-  color: #DEB217;
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-  color: #C59B08;
+.search {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
-/*---------------------Icon color---------------------------- */
-
-.orange {
-  color:#FFA500
+#searchForm {
+  padding-left: 30px;
+  width: 430px !important;
+  height: 40px;
 }
 
- 
+#searchBar{
+  position: absolute;
+  bottom: 90px;
+  width:10px;
+  height:10px;
+  right:750px; 
+}
+
+i#searchBar {
+  color: #097220;
+}
 
 
 

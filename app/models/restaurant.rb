@@ -1,4 +1,11 @@
 class Restaurant < ApplicationRecord
+    searchable do
+        text :name, :description, :full_address
+        string  :sort_full_address do
+            full_address.downcase.gsub(/^(an?|the)/, '')
+        end
+    end
+
     has_one_attached :image 
     has_many :restaurant_images, inverse_of: :restaurant
     has_many_attached :images
