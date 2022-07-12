@@ -20,9 +20,14 @@ class RestaurantsController < ApplicationController
 
   def create
     @user = current_user
-    @restaurant = @user.restaurants.build(restaurant_params)
+    @restaurant = @user.restaurants.create(restaurant_params)
     @restaurant.save
     @restaurants = current_user.restaurants
+    params[:restaurant][:category_ids].each do |category|
+      if category.present?
+        @restaurant.restaurant_categories.create(category_id: category)
+      end
+    end
     flash.now[:notice] = "Restaurant was successfully created"
     respond_to do |format|
       format.js
@@ -33,9 +38,14 @@ class RestaurantsController < ApplicationController
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.update(restaurant_params)
     @restaurants = current_user.restaurants
-    respond_to do |format|
-      format.js
+    params[:restaurant][:category_ids].each do |category|
+      if category.present?
+        @restaurant.restaurant_categories.create(category_id: category)
+      end
     end
+      respond_to do |format|
+        format.js
+      end
   end
 
   def destroy
@@ -50,9 +60,13 @@ class RestaurantsController < ApplicationController
     @restaurants = @search.results
   end
 
+  def google_map
+
+  end 
+
   private
    
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :image, :email, :contact, :full_address, clips: [], images: [] )
+    params.require(:restaurant).permit(:name, :latitude, :longitude, :description, :image, :email, :contact, :full_address, clips: [], images: [] )
   end
 end

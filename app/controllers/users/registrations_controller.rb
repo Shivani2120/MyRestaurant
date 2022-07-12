@@ -54,16 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     super(resource)
-    if user_signed_in?
-      if current_user.has_role? :owner 
-        if current_user.stripe_id.nil? 
-          redirect_to subscriptions_path
-        else
-          redirect_to restaurants_path
-        end    
-      end   
-    end 
-   
+    "/restuarants"
   end
 
   # The path used after sign up for inactive accounts.

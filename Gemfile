@@ -76,5 +76,7 @@ gem 'redis-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
-gem 'geocoder', '~> 1.3'
+gem 'activeadmin'
+
+
 

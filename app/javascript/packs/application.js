@@ -10,6 +10,7 @@ import "channels"
 import "bootstrap"
 import { Tooltip, Popover } from "bootstrap"
 import "@fortawesome/fontawesome-free/css/all"
+import "controllers"
 
 
 require("../stylesheets/application.scss")
@@ -21,5 +22,11 @@ ActiveStorage.start()
 
 
 
+window.dispatchMapsEvent = function (...args) {
+  const event = document.createEvent("Events")
+  event.initEvent("google-maps-callback", true, true)
+  event.args = args
+  window.dispatchEvent(event)
+}
 
 

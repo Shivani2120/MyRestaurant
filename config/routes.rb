@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # require 'sidekiq/web'
   # mount Sidekiq::Web => "/sidkiq"
   
   root to: "home#index"
  
+  resources :restaurants do 
+    resources :menus
+  end 
+  
   resources :restaurants do
     resources :reviews, only: [:create, :destroy, :new]
       collection do
-        get :search
+        get :search , :google_map
       end
   end
 

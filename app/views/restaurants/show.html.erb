@@ -32,29 +32,43 @@
 
   <!--------------------------------------restaurant detail----------------------------------------------->               
   <h3 class="fw-bolder mt-3"><%= @restaurant.name %></h2 >
+
+  <div id="map"></div>
   <p class="text-muted"><%= @restaurant.full_address %></p>
 
-  <div class="fst-italic" ><%= @restaurant.email %></div>
+  <div class="fst-italic" ><%= @restaurant.email %></div><br/>
 
-  <div class="fw-light"><%= @restaurant.contact %></div>    
+    <span>categories:
+    <% @restaurant.categories.each do |category| %>             
+         <%= category.name %>         
+    <% end %>  
+    <span>
   <hr/>
- 
-  <!------------------------------------Review--------------------------------------->
+  
+  <!------------------------------map--------------------------->
+    <div class="col-12">
+      <%= link_to google_map_restaurants_path do %>
+       <%= image_tag ("icons8-google-maps-old.svg"), width: "30px", height: "30px" %>
+       <% end %>
+         &#160;&#160;
+        <%= link_to new_restaurant_review_path(@restaurant), data: { "bs-target": "#exampleModal", "bs-toggle": "modal" } do %>
+          <%= image_tag ("icons8-review-64.png"), width: "30px", height: "30px" %>
+        <% end %>
+         &#160;&#160;
+        <%= link_to "Menu", restaurant_menus_path(@restaurant) %>
+              
+      <br/>
+      <br/>
+    </div>
+       
       
+  <!------------------------------------Review--------------------------------------->
+     
   <div id="clicked">
- 
-    <%= render 'reviews/review' %>
-   
+      <%= render 'reviews/review' %>
   </div>
 
-    <!---------------------------- Button ----------------------------------->
-     <div class="col-12">
-            <%= link_to "Review", new_restaurant_review_path(@restaurant), class: "btn btn-outline-primary", data: { "bs-target": "#exampleModal", "bs-toggle": "modal" }%>
-            <br/>
-            <br/>
-      </div>
-   
-
+  
     <!------------------------------ Modal ------------------------------------------------>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">

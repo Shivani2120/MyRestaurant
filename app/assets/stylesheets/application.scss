@@ -5,6 +5,8 @@
 @import "reviews.scss";
 @import "home.scss";
 @import "restaurants.scss";
+// @import "users.scss";
+
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -53,57 +55,6 @@
   position: absolute;
   bottom: 0px;
 }
-
-/*---------------------Search Bar------------------------------*/ 
-
-.middle {
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-.middle h1{
-  font-size: 50px;
-}
-
-.middleText {
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  font-size: 30px;
-}
-
-.search {
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-}
-
-#searchForm {
-  padding-left: 30px;
-  width: 430px !important;
-  height: 40px;
-}
-
-#searchBar{
-  position: absolute;
-  bottom: 90px;
-  width:10px;
-  height:10px;
-  right:750px; 
-}
-
-i#searchBar {
-  color: #097220;
-}
-
-
-
 
 
 

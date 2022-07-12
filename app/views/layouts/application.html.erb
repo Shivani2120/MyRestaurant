@@ -10,13 +10,20 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
+
+     <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiHu2NfKlUSaE0-nluvepwIg5TpBdT-8c &callback=initMap&v=weekly"
+    defer
+    ></script>
+
+   
   </head>
 
   <body> 
-    <% if controller_name == "restaurants" && action_name == "show" || action_name == "search" %>
+    <% if controller_name == "restaurants" && action_name == "show" || action_name == "search" || action_name == "google_map" %>
 
     <% else %>
-      <%= render "shared/header" %>
+      <%#= render "shared/header" %>
     <% end %> 
 
     <% flash.each do |type, msg| %>
