@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+
     searchable do
         text :name, :description, :full_address
         string  :sort_full_address do

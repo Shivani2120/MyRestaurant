@@ -6,15 +6,16 @@ Rails.application.routes.draw do
   # mount Sidekiq::Web => "/sidkiq"
   
   root to: "home#index"
- 
-  resources :restaurants do 
-    resources :menus
-  end 
-  
+
+
   resources :restaurants do
     resources :reviews, only: [:create, :destroy, :new]
+    resources :menus
       collection do
         get :search , :google_map
+      end
+      member do
+        post :rest_sortable
       end
   end
 

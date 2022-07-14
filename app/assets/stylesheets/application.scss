@@ -5,12 +5,10 @@
 @import "reviews.scss";
 @import "home.scss";
 @import "restaurants.scss";
+@import "font-awesome";
 // @import "users.scss";
-
-
 // External libraries
 @import "bootstrap/scss/bootstrap";
-
 
 * {
   margin: 0px;
@@ -56,5 +54,9 @@
   bottom: 0px;
 }
 
+/* ------------------------------------Easy Sortable Lists with Rails-------------------*/
 
+.ui-sortable-handle{
+  cursor: pointer;
+}
 

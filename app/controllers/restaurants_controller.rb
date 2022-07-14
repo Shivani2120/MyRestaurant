@@ -1,8 +1,9 @@
 class RestaurantsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @restaurants = current_user.restaurants      
+    @restaurants = current_user.restaurants.order(position: :desc)      
   end
 
   def edit
@@ -12,6 +13,13 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = current_user.restaurants.build
     @restaurant.restaurant_images.build
+  end
+
+  def rest_sortable
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.each_with_index do |id, index|
+      Restaurant.where(id: id).update_all(position: index + 1)
+    end  
   end
 
   def show
@@ -67,6 +75,6 @@ class RestaurantsController < ApplicationController
   private
    
   def restaurant_params
-    params.require(:restaurant).permit(:name, :latitude, :longitude, :description, :image, :email, :contact, :full_address, clips: [], images: [] )
+    params.require(:restaurant).permit(:name, :position, :latitude, :longitude, :description, :image, :email, :contact, :full_address, clips: [], images: [] )
   end
 end

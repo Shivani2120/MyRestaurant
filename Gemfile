@@ -78,5 +78,6 @@ gem 'sunspot_solr'
 gem 'progress_bar'
 gem 'activeadmin'
 
-
+gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
+gem "acts_as_list"
 
