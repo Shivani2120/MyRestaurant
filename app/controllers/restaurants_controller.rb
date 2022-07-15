@@ -24,6 +24,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    authorize! :read, @restaurant
   end
 
   def create

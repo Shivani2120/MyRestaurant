@@ -1,4 +1,2 @@
-$( document ).ready(function() {
-    $("#sortable1" ).sortable({});
-});
+import { application } from "controllers/application"
 

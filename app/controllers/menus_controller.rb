@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+    before_action :authenticate_user!
+
     def index
         @restaurant = Restaurant.find(params[:restaurant_id])
         @menus = Menu.order(position: :desc)
@@ -6,7 +8,7 @@ class MenusController < ApplicationController
 
     def new
         @restaurant = Restaurant.find(params[:restaurant_id])
-        @menu = @restaurant.menus.new
+        @menu = @restaurant.menus.build
     end
 
     def show
@@ -28,10 +30,11 @@ class MenusController < ApplicationController
     end
 
     def update
-        @restaurant = Restaurant.find(params[:restaurant_id])
-        @menu = Menu.find(params[:id])
-        @menu.update(menu_params)
-          redirect_to restaurant_menus_path
+        if @menu.update_attributes(menu_params)
+            redirect_to restaurant_menus_path
+        else
+        render action: 'edit'
+        end
     end 
 
     def destroy
