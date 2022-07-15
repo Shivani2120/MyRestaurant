@@ -62,3 +62,22 @@ gem 'image_processing', '~> 1.2'
 gem 'cancancan'
 
 gem "rolify"
+
+gem 'stripe-rails'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem "letter_opener", group: :development
+
+gem 'sidekiq'
+
+gem 'redis-rails'
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
+gem 'activeadmin'
+
+gem 'font-awesome-sass', '~> 5.6', '>= 5.6.1'
+gem "acts_as_list"
+

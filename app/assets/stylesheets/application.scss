@@ -2,10 +2,13 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
-
+@import "reviews.scss";
+@import "home.scss";
+@import "restaurants.scss";
+@import "font-awesome";
+// @import "users.scss";
 // External libraries
 @import "bootstrap/scss/bootstrap";
-
 
 * {
   margin: 0px;
@@ -40,7 +43,7 @@
   
   background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("/assets/davide-cantelli-jpkfc5_d-DI-unsplash.jpg");
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   background-position: center;
   background-size: cover;
   position: relative;
@@ -51,14 +54,9 @@
   bottom: 0px;
 }
 
-.middle {
-  height: 80vh;
-  width: 80%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
+/* ------------------------------------Easy Sortable Lists with Rails-------------------*/
+
+.ui-sortable-handle{
+  cursor: pointer;
 }
 
-.middle h1{
-  font-size: 70px;
-}

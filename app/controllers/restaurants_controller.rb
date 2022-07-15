@@ -1,8 +1,9 @@
 class RestaurantsController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
+  before_action :authenticate_user!, except: [:show]
 
   def index
-    @restaurants = current_user.restaurants
+    @restaurants = current_user.restaurants.order(position: :desc)      
   end
 
   def edit
@@ -14,16 +15,28 @@ class RestaurantsController < ApplicationController
     @restaurant.restaurant_images.build
   end
 
+  def rest_sortable
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.each_with_index do |id, index|
+      Restaurant.where(id: id).update_all(position: index + 1)
+    end  
+  end
+
   def show
-    @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
+    authorize! :read, @restaurant
   end
 
   def create
-    debugger
     @user = current_user
-    @restaurant = @user.restaurants.build(restaurant_params)
+    @restaurant = @user.restaurants.create(restaurant_params)
     @restaurant.save
     @restaurants = current_user.restaurants
+    params[:restaurant][:category_ids].each do |category|
+      if category.present?
+        @restaurant.restaurant_categories.create(category_id: category)
+      end
+    end
     flash.now[:notice] = "Restaurant was successfully created"
     respond_to do |format|
       format.js
@@ -34,9 +47,14 @@ class RestaurantsController < ApplicationController
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant.update(restaurant_params)
     @restaurants = current_user.restaurants
-    respond_to do |format|
-      format.js
+    params[:restaurant][:category_ids].each do |category|
+      if category.present?
+        @restaurant.restaurant_categories.create(category_id: category)
+      end
     end
+      respond_to do |format|
+        format.js
+      end
   end
 
   def destroy
@@ -44,10 +62,20 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
   end
 
+  def search
+    @search = Restaurant.search do
+      fulltext  params[:search]
+    end
+    @restaurants = @search.results
+  end
+
+  def google_map
+
+  end 
+
   private
    
   def restaurant_params
-    params.require(:restaurant).permit(:name, :description, :image, :email, :contact, :full_address, restaurant_images_attributes: [:restaurant_id, :image, :_destroy])
+    params.require(:restaurant).permit(:name, :position, :latitude, :longitude, :description, :image, :email, :contact, :full_address, clips: [], images: [] )
   end
 end
-                                           

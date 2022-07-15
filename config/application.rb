@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "active_storage/engine"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,6 +18,7 @@ module MyRestaurant
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << Rails.root.join("app/services")
+    config.active_job.queue_adapter = :sidekiq
   end
 end

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+#     redirect_to root_url, alert: exception.message
+
     before_action :authenticate_user!
 
     protect_from_forgery with: :exception
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
  
-     add_flash_types :info, :error, :warning
+    add_flash_types :info, :error, :warning
 
 
     protected
